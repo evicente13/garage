@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="stylesheet" href="/css/login.css">
+
+    <title>Inicio de Garage77</title>
+</head>
+
+<body>
+
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form th:object="${usuario}">
+                <h1>Bienvenido de vuelta</h1>
+                <div class="social-icons">
+                  <span>Inicia sesion con tu Usuario y Clave</span>
+                </div>
+                <br>
+                
+                <div class="form-floating mb-3">
+                  
+                  <input type="email" class="form-control" id="floatingInput" placeholder="Usuario" th:value="${usuario}">
+                  
+                </div>
+                <div class="form-floating">
+                  
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Clave" th:value="${clave}">
+                  
+                </div>
+
+                <button type="button" onclick="validarInicioSesionUsuario()">Iniciar Sesion</button>
+            </form>
+        </div>
+
+        <div class="form-container sign-in">
+            <form th:object="${cliente}">
+                <h1>Bienvenido</h1>
+                <div class="social-icons">
+                  <span>Inicia sesion con tu Usuario y Clave</span>
+                </div>
+                
+
+                <div class="form-floating mb-3">
+                  
+                  <input type="email" class="form-control" id="floatingInput" placeholder="Usuario" th:value="${usuario}">
+                  
+                </div>
+                <div class="form-floating">
+                  
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Clave" th:value="${clave}">
+                  
+                </div>
+
+                <button type="button" onclick="validarInicioSesionCliente()">Iniciar Sesion</button>
+            </form>
+        </div>
+        
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>¿Eres Usuario?</h1>
+                    <p>Click aquí para acceder a nuestra web</p>
+                    <button class="hidden" id="login">Soy Usuario</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>¿Eres Administrador?</h1>
+                    <p>Click aquí para acceder a las funciones de colaborador</p>
+                    <button class="hidden" id="register">Soy Administrador</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+ 
+    <script>
+        function validarInicioSesionCliente() {
+          var usuario = document.getElementById("inputCod").value;
+          var clave = document.getElementById("inputCla").value;
+    
+          if (usuario === "codigo" && clave === "nru_documento") {
+            alert("Inicio de sesión exitoso");
+            window.location.href = "/";
+          } else {
+            alert("Codigo de Cliente o Contraseña incorrectos");
+          }
+        }
+      </script>
+
+<script>
+    function validarInicioSesionUsuario() {
+      var usuario = document.getElementById("inputUsu").value;
+      var clave = document.getElementById("inputPsw").value;
+
+      if (usuario === "usuario" && clave === "clave") {
+        alert("Inicio de sesión exitoso");
+        window.location.href = "/";
+      } else {
+        alert("Nombre de usuario o Contraseña incorrectos");
+      }
+    }
+  </script>
+
+    <script>
+        const container = document.getElementById('container');
+        const registerBtn = document.getElementById('register');
+        const loginBtn = document.getElementById('login');
+
+        registerBtn.addEventListener('click', () => {
+                container.classList.add("active");
+                });
+
+        loginBtn.addEventListener('click', () => {
+            container.classList.remove("active");
+                });
+    </script>
+
+</body>
+
+</html>

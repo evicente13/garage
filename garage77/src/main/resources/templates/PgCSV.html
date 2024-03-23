@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/mant.css">
+    <title>Mantenimiento - GARAGE 77</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="assets/logo.png">
+                    <h2>Garage <span class="danger">77</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="/Index" >
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Menu Principal</h3>
+                </a>
+                <a href="/PgCSV" class="active">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3>Mantenimiento</h3>
+                </a>
+                <a href="/PgMecanico" >
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Mecanico</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Reportes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        mail_outline
+                    </span>
+                    <h3>Facturas</h3>
+                    <span class="message-count">27</span>
+                </a>
+                <a href="/Listados">
+                    <span class="material-icons-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <h3>Listados</h3>
+                </a>
+                <a href="/PgInventario">
+                    <span class="material-icons-sharp">
+                        inventory
+                    </span>
+                    <h3>Inventario</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Ajustes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                    <h3>Nuevo Usuario</h3>
+                </a>
+                <a href="/Login">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Cerrar Sesion</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1 style="text-align: center;">Mantenimiento <span class="danger">General</span> </h1>
+            <!-- Analyses -->
+            <div class="analyse">
+
+                <div class="sales">
+                    <div>
+                        <h2 style="text-align: center;">Datos del <span class="danger">Cliente</span> </h2>
+                        
+                        <div class="info">
+                            
+
+						    <br>
+							<form action="/PgCSV" method="post" th:object="${CSV}">
+                                <div style="text-align: center;">
+                                    
+                                    
+                                    
+                                    <label for="inputCod">Nombre</label> <input type="text"
+                                    class="form-control" id="inputCod" placeholder="nombre"
+                                    name="nombreCliente"  required>
+                                    <br>
+                                    
+									<label for="inputNom">telefono</label> <input type="number"
+                                    class="form-control" id="inputNom" placeholder="telefono"
+                                    name="telefonoCliente" required>
+								
+								    <br>
+								
+									<label for="inputApe">Dni Cliente</label> <input type="number"
+                                    class="form-control" id="inputApe" placeholder="dni"
+                                    name="dniCliente"  required>
+									<br>
+
+                                    <h2 style="text-align: center;">Datos del <span class="danger">Servicio</span> </h2>
+									
+                                    <br>
+
+
+									<label for="inputHora">Hora de Recepcion: </label> <input type="datetime-local"
+                                    class="form-control" id="inputHora" placeholder="Hora Recepcion"
+                                    name="servicioHoraRecep"  required>
+
+                                    <br>
+
+                                    <label for="inputHora">Hora de Entrada: </label> <input type="datetime-local"
+                                    class="form-control" id="inputHora" placeholder="Hora Entrega"
+                                    name="servicioHoraEntrega"  required>
+
+                                    <br>   
+
+                                </div>
+							    <div th:text="${mensaje}"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="visits">
+                    <div>
+                        <h2 style="text-align: center;">Datos del <span class="danger">Vehiculo</span> </h2>
+                        <div class="info">
+                            <br>
+
+                            <label for="inputPlaca">Placa: </label> <input type="text"
+                            class="form-control" id="inputPlaca" placeholder="Placa"
+                            name="placa" >
+                                        
+                            <br>
+
+                            <label for="inputAnno">Año:</label><input type="number" style="width:155px;"
+                            class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                            name="añoVehiculo" >
+                                        
+                            <br>
+
+                            <label for="inputKilo">Kilometraje: </label> <input type="text"
+						    class="form-control" id="inputKilo" placeholder="Kilometraje"
+							name="kmActual" >
+								
+							<br>
+
+                            <label for="inputKilo">Kilometraje Aprox: </label> <input type="text"
+							class="form-control" id="inputKilo" placeholder="Kilometraje Aprox"
+							name="kmAprox">
+								
+						    <br>
+							        
+								        
+                            <label for="inputMarca">Marca: </label> <input type="text"
+                            class="form-control" id="inputMarca" placeholder="Marca"
+                            name="marca" >
+								
+							<br>
+								
+                            <label for="inputModel">Modelo: </label> <input type="text"
+                            class="form-control" id="inputModel" placeholder="Modelo"
+                            name="modelo" >
+								
+                            <br>    
+                            
+                                        
+                        </div>
+						    
+							<div th:text="${mensaje}"></div>
+                    </div>
+                    
+                </div>	
+
+            </div>
+
+            
+            <div class="analysee">
+                <div>
+                    <div class="recent-orders">
+                
+                        <div>
+                            <h2 style="text-align: center;"><span class="danger">Insumos</span> Disponibles</h2>
+                            <input type="text" id="filtro" placeholder="Filtrar por Descripcion">
+
+                            <div th:each="Insumo : ${insumos}">
+                                <input type="checkbox" th:id="${'Insumo_' + Insumo.insumoId}" th:name="'insumosSeleccionados'" th:value="${Insumo.insumoId}">
+                                <label th:for="${'Insumo_' + Insumo.insumoId}" th:text="${Insumo.insumoDescripcion}"></label>
+                                <br>
+                            </div>
+                            
+                            
+                        </div>
+
+                        
+        
+                        <div id="pagination" style="text-align: center; margin-top: 20px;">
+                            <div id="buttonsContainer">
+                                <button id="prevBtn" style="color: #fff; background-color: #1C9028">Anterior</button>
+                                <button id="nextBtn" style="color: #fff; background-color: #1C9028">Siguiente</button>
+                            </div>
+                            <span id="currentPage"></span>
+                        </div>
+                        
+                    </div>
+
+                    <!-- <h3>Mantenimiento</h3>
+                    <select name="mantenimiento" id="mantenimiento" multiple>
+                        <option value="1">Mantenimiento de Frenos</option>
+                        <option value="2">Australia</option>
+                        <option value="3">Germany</option>
+                        <option value="4">Canada</option>
+                        <option value="5">Russia</option>
+                    </select>
+                    <h3>Servicio</h3>
+                    <select name="servicio" id="servicio" multiple>
+                        <option value="1">Afghanistan</option>
+                        <option value="2">Australia</option>
+                        <option value="3">Germany</option>
+                        <option value="4">Canada</option>
+                        <option value="5">Russia</option>
+                    </select>
+                    <h3>Otros</h3>
+                    <select name="otros" id="otros" multiple>
+                        <option value="1">Afghanistan</option>
+                        <option value="2">Australia</option>
+                        <option value="3">Germany</option>
+                        <option value="4">Canada</option>
+                        <option value="5">Russia</option>
+                    </select> -->
+                    
+                    <!-- <table id="id_table" class="table table-striped" style="text-align: center;">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Servicios</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+
+                        <tbody style="text-align: center;">
+                            <tr>
+                                <td>
+                                    <label>  </label> <input type="checkbox" name="servicio" value="lavado_vehicular"><br>
+                                    <label>  <input type="checkbox" name="servicio" value="lavado_salon"></label><br>
+                                    <label> Pintura <input type="checkbox" name="servicio" value="pintura"></label><br>
+                                    <label> Encerado <input type="checkbox" name="servicio" value="encerado"></label><br>
+                                    <label>  <input type="checkbox" name="servicio" value="undercoating"></label><br>
+                                    <label> Rev. Susp. D. <input type="checkbox" name="servicio" value="rev_susp_d"></label><br>
+                                    <label> Rev. Susp. P. <input type="checkbox" name="servicio" value="rev_susp_p"></label><br>
+                                    <label> Zincado <input type="checkbox" name="servicio" value="zincado"></label><br>
+                                    <label> Pulverizado de Motor <input type="checkbox" name="servicio" value="pulverizado_motor"></label><br>
+                                </td>
+
+                                <td>
+                                    <label>  <input type="checkbox" name="servicio" value="mantenimiento_frenos"></label><br>
+                                    <label> Cambio de Bujias <input type="checkbox" name="servicio" value="cambio_bujias"></label><br>
+                                    <label> Alineamiento de Dirección <input type="checkbox" name="servicio" value="alineamiento_direccion"></label><br>
+                                    <label> Cambio de aceite <input type="checkbox" name="servicio" value="cambio_aceite"></label><br>
+                                    <label> Revisión de Niveles <input type="checkbox" name="servicio" value="revision_niveles"></label><br>
+                                    <label> Revision de Fajas <input type="checkbox" name="servicio" value="revision_fajas"></label><br>
+                                    <label> Rotac. Neumáticos <input type="checkbox" name="servicio" value="rotac_neumaticos"></label><br>
+                                    <label>  <input type="checkbox" name="servicio" value="LavadoMotor"></label><br>
+                                </td>
+
+                                <td>
+                                    <label> Limpieza de Obturador <input type="checkbox" name="servicio" value="mantenimiento_frenos"></label><br>
+                                    <label> Limpieza de Inyectores <input type="checkbox" name="servicio" value="cambio_bujias"></label><br>
+                                    <label> Filtro de Acondicionado <input type="checkbox" name="servicio" value="alineamiento_direccion"></label><br>
+                                    <label> Cambio de aceite <input type="checkbox" name="servicio" value="cambio_aceite"></label><br>
+                                    <label> Aceite de Caja <input type="checkbox" name="servicio" value="revision_niveles"></label><br>
+                                    <label>  <input type="checkbox" name="servicio" value="revision_fajas"></label><br>
+                                    <label> Revision de Bobinas <input type="checkbox" name="servicio" value="rotac_neumaticos"></label><br>
+                                    <label> Filtro de Aire <input type="checkbox" name="servicio" value="revision_niveles"></label><br>
+                                    <label> Filtro de Aceite <input type="checkbox" name="servicio" value="revision_fajas"></label><br>
+                                    <label> Filtro de Petroleo <input type="checkbox" name="servicio" value="rotac_neumaticos"></label><br>
+                                </td>
+                            </tr>
+                        </tbody>
+                        
+                    
+                    </table> -->
+
+                    <div class="btn-container" style="text-align: center;"> 
+                        <br>
+                        <button type="submit" name="action" value="registrar" class="btn btn-primary">Registrar</button>
+                    </div>
+                </form>
+                </div>
+            </div>
+            <!-- End of Recent Orders -->
+
+        </main>
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Bienvenido, <b>Admin</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Nav -->
+
+            <div class="user-profile">
+                <div class="logo">
+                    <img src="assets/logo.png">
+                    <h2>Garage 77</h2>
+                    <p>Automotriz de confianza</p>
+                </div>
+            </div>
+
+
+
+            <div class="reminders">
+                <div class="header">
+                    <h2>Recordatorios</h2>
+                    <span class="material-icons-sharp">
+                        notifications_none
+                    </span>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            volume_up
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Pagos Pendientes</h3>
+                            <small class="text_muted">
+                                5 deudas
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification deactive">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            edit
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text_muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification add-reminder">
+                    <div>
+                        <span class="material-icons-sharp">
+                            add
+                        </span>
+                        <h3>Add Reminder</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/gh/habibmhamadi/multi-select-tag@2.0.1/dist/js/multi-select-tag.js"></script>
+    <script>
+        new MultiSelectTag('lavado')  // id
+    </script>
+
+    <script>
+        new MultiSelectTag('mantenimiento')  // id
+    </script>
+
+    <script>
+        new MultiSelectTag('servicio')  // id
+    </script>
+
+    <script>
+        new MultiSelectTag('otros')  // id
+    </script>
+
+
+    <script src="/js/"></script>
+    <script src="/js/index.js"></script>
+
+</body>
+
+</html>

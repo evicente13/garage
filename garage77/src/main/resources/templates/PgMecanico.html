@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet">
+    <link rel="stylesheet" href="/css/mecanico.css">
+    <title>Mecanico - GARAGE 77</title>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar Section -->
+        <aside>
+            <div class="toggle">
+                <div class="logo">
+                    <img src="assets/logo.png">
+                    <h2>Garage <span class="danger">77</span></h2>
+                </div>
+                <div class="close" id="close-btn">
+                    <span class="material-icons-sharp">
+                        close
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="/Index" >
+                    <span class="material-icons-sharp">
+                        dashboard
+                    </span>
+                    <h3>Menu Principal</h3>
+                </a>
+                <a href="/PgCSV">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3>Mantenimiento</h3>
+                </a>
+                <a href="/PgMecanico" class="active" >
+                    <span class="material-icons-sharp">
+                        receipt_long
+                    </span>
+                    <h3>Mecanico</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        insights
+                    </span>
+                    <h3>Reportes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        mail_outline
+                    </span>
+                    <h3>Facturas</h3>
+                    <span class="message-count">27</span>
+                </a>
+                <a href="/Listados">
+                    <span class="material-icons-sharp">
+                        report_gmailerrorred
+                    </span>
+                    <h3>Listados</h3>
+                </a>
+                <a href="/PgInventario">
+                    <span class="material-icons-sharp">
+                        inventory
+                    </span>
+                    <h3>Inventario</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        settings
+                    </span>
+                    <h3>Ajustes</h3>
+                </a>
+                <a href="#">
+                    <span class="material-icons-sharp">
+                        add
+                    </span>
+                    <h3>Nuevo Usuario</h3>
+                </a>
+                <a href="/Login">
+                    <span class="material-icons-sharp">
+                        logout
+                    </span>
+                    <h3>Cerrar Sesion</h3>
+                </a>
+            </div>
+        </aside>
+        <!-- End of Sidebar Section -->
+
+        <!-- Main Content -->
+        <main>
+            <h1 style="text-align: center;">Mantenimiento <span class="danger">Mecanico</span> </h1>
+            <!-- Analyses -->
+            <div class="analyse">
+                <div class="visits">
+                    <div>
+                        <h2 style="text-align: center;">Datos del <span class="danger">Vehiculo</span> </h2>
+                        <div class="info" style="text-align: center;">
+                            <br>
+
+                            <label for="inputPlaca">Placa: </label> <input type="text"
+                            class="form-control" id="inputPlaca" placeholder="Placa"
+                            name="placa" >
+                                        
+                            <br>
+
+                            <label for="inputAnno">Año:</label><input type="number" style="width:155px;"
+                            class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                            name="añoVehiculo" >
+                                        
+                            <br>
+
+                            <label for="inputKilo">Kilometraje: </label> <input type="number"
+						    class="form-control" id="inputKilo" placeholder="Kilometraje"
+							name="kmActual" >
+								
+							<br>
+
+                            <label for="inputKilo">Kilometraje Aprox: </label> <input type="number"
+							class="form-control" id="inputKilo" placeholder="Kilometraje Aprox"
+							name="kmAprox">
+								
+						    <br>
+							        
+								        
+                            <label for="inputMarca">Marca: </label> <input type="text"
+                            class="form-control" id="inputMarca" placeholder="Marca"
+                            name="marca" >
+								
+							<br>
+								
+                            <label for="inputModel">Modelo: </label> <input type="text"
+                            class="form-control" id="inputModel" placeholder="Modelo"
+                            name="modelo" >
+								
+                            <br>    
+                            
+                            <label for="inputModel">codigo Servicio: </label> <input type="text"
+                            class="form-control" id="inputModel" placeholder="codServicio"
+                            name="codServicio" >
+                                        
+                        </div>
+						    
+							<div th:text="${mensaje}"></div>
+                    </div>
+                    
+                </div>	
+
+                
+            </div>
+            <!-- End of Analyses -->
+
+            <div class="analysee">
+
+                <div>
+                    <h2 style="text-align: center;">Inventario <span class="danger">Vehicular</span> </h2>
+                    <br>
+                    <form action="/PgCliente" method="post">
+
+                    <div style="text-align: center;">
+                    
+                        <label> Trajeta de Propiedad, SOAT <input type="checkbox" name="servicio" value="TrajetaPropiedad"></label><br>
+                        <label> Encendedor <input type="checkbox" name="servicio" value="Encendedor"></label><br>
+                        <label> Cenicero Portatil <input type="checkbox" name="servicio" value="CeniceroPortatil"></label><br>
+                        <label> Juego Pisos Alfombrados / Jebe <input type="checkbox" name="servicio" value="JuegoPisosAlfombrados"></label><br>
+                        <label> Tapas de Ruedas <input type="checkbox" name="servicio" value="TapasRuedas"></label><br>
+                        <label> LLantas y Repuestos <input type="checkbox" name="servicio" value="LLantasRepuestos"></label><br>
+                        <label> Gata - Planca de Gata <input type="checkbox" name="servicio" value="Gata"></label><br>
+                        <label> LLave de Ruedas <input type="checkbox" name="servicio" value="LLaveRuedas"></label><br>
+                        <label> Seguro de Aros <input type="checkbox" name="servicio" value="SeguroAros"></label><br>
+                        <label> Antena <input type="checkbox" name="servicio" value="Antena"></label><br>
+                        <label for="inputNom">Otros: </label> <input type="text" class="form-control" id="inputNom" placeholder="Otros" name="otros">
+                        <br>
+
+                    </div>
+                    </form>
+                    <div th:text="${mensaje}"></div>
+                </div>
+
+                <div>
+                    <h2 style="text-align: center;">Diagnostico & <span class="danger">Revision</span> </h2>
+                        <br>
+                            <form action="/PgCliente" method="post">
+                                <div style="text-align: center;">
+                                    <label for="inputMarca">Frenos: </label> <input type="text"
+                                    class="form-control" id="inputMarca" placeholder="Marca"
+                                    name="marca">
+                                    <br>
+                    
+                                    <label for="inputModel">Freno de Mano: </label> <input type="text"
+                                    class="form-control" id="inputModel" placeholder="Modelo"
+                                    name="modelo">
+                    
+                                    <br>
+                    
+                        
+                                    <label for="inputPlaca">Liquido de frenos: </label> <input type="text"
+                                    class="form-control" id="inputPlaca" placeholder="Placa"
+                                    name="placa">
+
+                                    <br>
+
+                                    <label for="inputKilo">Liquido de Embrague: </label> <input type="number"
+                                    class="form-control" id="inputKilo" placeholder="Kilometraje"
+                                    name="kilometraje">
+                    
+                                    <br>
+
+                                    <label for="inputAnno">Refrigerante Motor:</label><input type="number" style="width:155px;"
+                                    class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                                    name="anno">
+
+                                    <br>
+
+                                    <label for="inputAnno">Bateria:</label><input type="number" style="width:155px;"
+                                    class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                                    name="anno">
+
+                                    <br>
+
+                                    <label for="inputAnno">Arrancador:</label><input type="number" style="width:155px;"
+                                    class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                                    name="anno">
+                    
+                                    <br>   
+
+                                    <label for="inputAnno">Alternador Carga:</label><input type="number" style="width:155px;"
+                                    class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                                    name="anno">
+                    
+                                    <br>  
+                                    <label for="inputAnno">Luces del Der:</label><input type="number" style="width:155px;"
+                                    class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                                    name="anno">
+                    
+                                    <br>    
+                                    <label for="inputAnno">Luces del Izq:</label><input type="number" style="width:155px;"
+                                    class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                                    name="anno">
+                    
+                                    <br> 
+                                    <label for="inputAnno">Luces Post:</label><input type="number" style="width:155px;"
+                                    class="form-control" id="inputAnno" placeholder="Ingrese Año" min="1900" max="2024" 
+                                    name="anno">
+                    
+                                    <br>    
+                                </div>
+                            </form>
+                        <div th:text="${mensaje}"></div>    
+                </div>
+
+            </div>
+            <!-- End of Recent Orders -->
+        </main>
+        <!-- End of Main Content -->
+
+        <!-- Right Section -->
+        <div class="right-section">
+            <div class="nav">
+                <button id="menu-btn">
+                    <span class="material-icons-sharp">
+                        menu
+                    </span>
+                </button>
+                <div class="dark-mode">
+                    <span class="material-icons-sharp active">
+                        light_mode
+                    </span>
+                    <span class="material-icons-sharp">
+                        dark_mode
+                    </span>
+                </div>
+
+                <div class="profile">
+                    <div class="info">
+                        <p>Bienvenido, <b>Admin</b></p>
+                        <small class="text-muted">Admin</small>
+                    </div>
+                    <div class="profile-photo">
+                        <img src="images/profile-1.jpg">
+                    </div>
+                </div>
+
+            </div>
+            <!-- End of Nav -->
+
+            <div class="user-profile">
+                <div class="logo">
+                    <img src="assets/logo.png">
+                    <h2>Garage 77</h2>
+                    <p>Automotriz de confianza</p>
+                </div>
+            </div>
+
+            <div class="reminders">
+                <div class="header">
+                    <h2>Recordatorios</h2>
+                    <span class="material-icons-sharp">
+                        notifications_none
+                    </span>
+                </div>
+
+                <div class="notification">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            volume_up
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Pagos Pendientes</h3>
+                            <small class="text_muted">
+                                5 deudas
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification deactive">
+                    <div class="icon">
+                        <span class="material-icons-sharp">
+                            edit
+                        </span>
+                    </div>
+                    <div class="content">
+                        <div class="info">
+                            <h3>Workshop</h3>
+                            <small class="text_muted">
+                                08:00 AM - 12:00 PM
+                            </small>
+                        </div>
+                        <span class="material-icons-sharp">
+                            more_vert
+                        </span>
+                    </div>
+                </div>
+
+                <div class="notification add-reminder">
+                    <div>
+                        <span class="material-icons-sharp">
+                            add
+                        </span>
+                        <h3>Add Reminder</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="/js/"></script>
+    <script src="/js/index.js"></script>
+
+</body>
+
+</html>
