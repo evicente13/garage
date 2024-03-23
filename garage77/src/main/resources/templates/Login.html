@@ -16,7 +16,8 @@
 
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form th:object="${usuario}">
+        
+            <form action="/Login" method="post" th:object="${Admin}">
                 <h1>Bienvenido de vuelta</h1>
                 <div class="social-icons">
                   <span>Inicia sesion con tu Usuario y Clave</span>
@@ -25,21 +26,21 @@
                 
                 <div class="form-floating mb-3">
                   
-                  <input type="email" class="form-control" id="floatingInput" placeholder="Usuario" th:value="${usuario}">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="adminUsu">
                   
                 </div>
                 <div class="form-floating">
                   
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Clave" th:value="${clave}">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Clave" name="adminContra">
                   
                 </div>
 
-                <button type="button" onclick="validarInicioSesionUsuario()">Iniciar Sesion</button>
-            </form>
+                <button type="submit" name="action" value="logear" class="btn btn-primary">Iniciar sesion</button>
         </div>
 
         <div class="form-container sign-in">
-            <form th:object="${cliente}">
+        
+            
                 <h1>Bienvenido</h1>
                 <div class="social-icons">
                   <span>Inicia sesion con tu Usuario y Clave</span>
@@ -48,16 +49,16 @@
 
                 <div class="form-floating mb-3">
                   
-                  <input type="email" class="form-control" id="floatingInput" placeholder="Usuario" th:value="${usuario}">
+                  <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="adminUsu">
                   
                 </div>
                 <div class="form-floating">
                   
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Clave" th:value="${clave}">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Clave" name="adminContra">
                   
                 </div>
 
-                <button type="button" onclick="validarInicioSesionCliente()">Iniciar Sesion</button>
+                <button type="submit" name="action" value="logear" class="btn btn-primary">Iniciar sesion</button>
             </form>
         </div>
         

@@ -22,6 +22,7 @@ import com.garage77.repository.IServicioRepository;
 import com.garage77.repository.IVehiculoRepository;
 import com.garage77.repository.InsumoRepository;
 import com.garage77.repository.InsumoVehiculoRepository;
+import com.garage77.repository.UserRepository;
 
 public class CSVController
 {
@@ -36,6 +37,7 @@ public class CSVController
 	private InsumoVehiculoRepository repoInVe;
 	@Autowired
 	private IServicioRepository repoServ;
+	
 	
 	
 	 @PostMapping("/PgCSV")
@@ -74,6 +76,8 @@ public class CSVController
 		insumo.setInsumoId(csv.getInsumoId());
 		insumo.setInsumoDescripcion(csv.getInsumoDescripcion());
 		insumo.setInsumoPrecio(csv.getInsumoPrecio());
+		
+		
 
         // Verificar si ya existe un cliente con el mismo código
           if (repoCli.existsById(csv.getIdCliente()))
@@ -85,10 +89,12 @@ public class CSVController
 
 							vehiculo.setClienteId(newcliente.getClienteId());
 							repoVehi.save(vehiculo);
+							
 							Servicio nuevoServicio = repoServ.save(servicio);
 							insumoVehiculo.setServicioId(nuevoServicio.getServicioId());
+							
 							repoInVe.save(insumoVehiculo);
-							System.out.print(servicio);
+							
             	            model.addAttribute("mensaje", "Cliente registrado correctamente");
             	       } catch (Exception e) {
             	            model.addAttribute("mensaje", "Error al registrar al Cliente");
