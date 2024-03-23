@@ -22,11 +22,9 @@ import com.garage77.repository.IServicioRepository;
 import com.garage77.repository.IVehiculoRepository;
 import com.garage77.repository.InsumoRepository;
 import com.garage77.repository.InsumoVehiculoRepository;
-import com.garage77.repository.UserRepository;
 
-public class CSVController
-{
-	
+public class CSVController {
+
 	@Autowired
 	private IClienteRepository repoCli;
 	@Autowired
@@ -37,81 +35,75 @@ public class CSVController
 	private InsumoVehiculoRepository repoInVe;
 	@Autowired
 	private IServicioRepository repoServ;
-	
-	
-	
-	 @PostMapping("/PgCSV")
-     public String registrarCSV(@ModelAttribute CSV csv, @RequestParam(value = "action", required = false) String action, Model model) {
-         if ("registrar".equals(action)) {
 
+	@PostMapping("/PgCSV")
+	public String registrarCSV(@ModelAttribute CSV csv, @RequestParam(value = "action", required = false) String action,
+			Model model) {
+		if ("registrar".equals(action)) {
 
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
-		
-		Cliente cliente = new Cliente();
-		cliente.setClienteNombre(csv.getNombreCliente());
-		cliente.setClienteTelefono(csv.getTelefonoCliente());
-		cliente.setClienteDni(csv.getDniCliente());
+			DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm");
 
-		Vehiculo vehiculo = new Vehiculo();
-		vehiculo.setPlaca(csv.getPlaca());
-		vehiculo.setAñoVehiculo(csv.getAñoVehiculo());
-		vehiculo.setKmActual(csv.getKmActual());
-		vehiculo.setKmAprox(csv.getKmAprox());
-		vehiculo.setMarca(csv.getMarca());
-		vehiculo.setModelo(csv.getModelo());
-		
-		Servicio servicio = new Servicio();
-		LocalDateTime fechaHoraRecep = LocalDateTime.parse(csv.getServicioHoraRecep(), formatter);
-		servicio.setServicioHoraRecep(fechaHoraRecep);
-		LocalDateTime fechaHoraEntrega = LocalDateTime.parse(csv.getServicioHoraEntrega(), formatter);
-		servicio.setServicioHoraEntrega(fechaHoraEntrega);
-		servicio.setServicioTotal(csv.getServicioTotal());
+			Cliente cliente = new Cliente();
+			cliente.setClienteNombre(csv.getNombreCliente());
+			cliente.setClienteTelefono(csv.getTelefonoCliente());
+			cliente.setClienteDni(csv.getDniCliente());
 
-		InsumoVehiculo insumoVehiculo = new InsumoVehiculo();
-		insumoVehiculo.setPlaca(csv.getPlaca());
-		insumoVehiculo.setInsumoId(csv.getInsumoId());
-		insumoVehiculo.setInsumoPrecio(csv.getInsumoPrecio());
+			Vehiculo vehiculo = new Vehiculo();
+			vehiculo.setPlaca(csv.getPlaca());
+			vehiculo.setAñoVehiculo(csv.getAñoVehiculo());
+			vehiculo.setKmActual(csv.getKmActual());
+			vehiculo.setKmAprox(csv.getKmAprox());
+			vehiculo.setMarca(csv.getMarca());
+			vehiculo.setModelo(csv.getModelo());
 
-		Insumo insumo = new Insumo();
-		insumo.setInsumoId(csv.getInsumoId());
-		insumo.setInsumoDescripcion(csv.getInsumoDescripcion());
-		insumo.setInsumoPrecio(csv.getInsumoPrecio());
-		
-		
+			Servicio servicio = new Servicio();
+			LocalDateTime fechaHoraRecep = LocalDateTime.parse(csv.getServicioHoraRecep(), formatter);
+			servicio.setServicioHoraRecep(fechaHoraRecep);
+			LocalDateTime fechaHoraEntrega = LocalDateTime.parse(csv.getServicioHoraEntrega(), formatter);
+			servicio.setServicioHoraEntrega(fechaHoraEntrega);
+			servicio.setServicioTotal(csv.getServicioTotal());
 
-        // Verificar si ya existe un cliente con el mismo código
-          if (repoCli.existsById(csv.getIdCliente()))
-          {
-               model.addAttribute("mensaje", "El código de Cliente ya existe");
-            	   } else {
-            	        try {
-							Cliente newcliente = repoCli.save(cliente);
+			InsumoVehiculo insumoVehiculo = new InsumoVehiculo();
+			insumoVehiculo.setPlaca(csv.getPlaca());
+			insumoVehiculo.setInsumoId(csv.getInsumoId());
+			insumoVehiculo.setInsumoPrecio(csv.getInsumoPrecio());
 
-							vehiculo.setClienteId(newcliente.getClienteId());
-							repoVehi.save(vehiculo);
-							
-							Servicio nuevoServicio = repoServ.save(servicio);
-							insumoVehiculo.setServicioId(nuevoServicio.getServicioId());
-							
-							repoInVe.save(insumoVehiculo);
-							
-            	            model.addAttribute("mensaje", "Cliente registrado correctamente");
-            	       } catch (Exception e) {
-            	            model.addAttribute("mensaje", "Error al registrar al Cliente");
-            	            }
-            	        }
-         }
-		 
-		 return "PgCSV";
+			Insumo insumo = new Insumo();
+			insumo.setInsumoId(csv.getInsumoId());
+			insumo.setInsumoDescripcion(csv.getInsumoDescripcion());
+			insumo.setInsumoPrecio(csv.getInsumoPrecio());
+
+			// Verificar si ya existe un cliente con el mismo código
+			if (repoCli.existsById(csv.getIdCliente())) {
+				model.addAttribute("mensaje", "El código de Cliente ya existe");
+			} else {
+				try {
+					Cliente newcliente = repoCli.save(cliente);
+
+					vehiculo.setClienteId(newcliente.getClienteId());
+					repoVehi.save(vehiculo);
+
+					Servicio nuevoServicio = repoServ.save(servicio);
+					insumoVehiculo.setServicioId(nuevoServicio.getServicioId());
+
+					repoInVe.save(insumoVehiculo);
+
+					model.addAttribute("mensaje", "Cliente registrado correctamente");
+				} catch (Exception e) {
+					model.addAttribute("mensaje", "Error al registrar al Cliente");
+				}
+			}
+		}
+
+		return "PgCSV";
 	}
-	 
+
 	@GetMapping("/PgCSV/listadoInsumos")
-	public String mostrarInsumos(Model model) 
-	{
-			List <Insumo> listaInsumos = repoInsu.findAll();
-			model.addAttribute("insumos", listaInsumos);
-			System.out.print(listaInsumos);
-			return ("PgCSV");
-		} 
+	public String mostrarInsumos(Model model) {
+		List<Insumo> listaInsumos = repoInsu.findAll();
+		model.addAttribute("insumos", listaInsumos);
+		System.out.print(listaInsumos);
+		return ("PgCSV");
+	}
 
 }

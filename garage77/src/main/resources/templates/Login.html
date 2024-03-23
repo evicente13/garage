@@ -2,125 +2,99 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+	<link rel="stylesheet" href="style.css">
 
-    <link rel="stylesheet" href="/css/login.css">
+	<link rel="stylesheet" href="/css/login.css">
 
-    <title>Inicio de Garage77</title>
+	<title>Inicio de Garage77</title>
 </head>
 
 <body>
 
-    <div class="container" id="container">
-        <div class="form-container sign-up">
-        
-            <form action="/Login" method="post" th:object="${Admin}">
-                <h1>Bienvenido de vuelta</h1>
-                <div class="social-icons">
-                  <span>Inicia sesion con tu Usuario y Clave</span>
-                </div>
-                <br>
-                
-                <div class="form-floating mb-3">
-                  
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="adminUsu">
-                  
-                </div>
-                <div class="form-floating">
-                  
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Clave" name="adminContra">
-                  
-                </div>
+	<div class="container" id="container">
+		<div class="form-container sign-up">
 
-                <button type="submit" name="action" value="logear" class="btn btn-primary">Iniciar sesion</button>
-        </div>
+				<h1>Bienvenido de vuelta</h1>
+				<div class="social-icons">
+					<span>Inicia sesion con tu Usuario y Clave</span>
+				</div>
+				<br>
 
-        <div class="form-container sign-in">
-        
-            
-                <h1>Bienvenido</h1>
-                <div class="social-icons">
-                  <span>Inicia sesion con tu Usuario y Clave</span>
-                </div>
-                
+				<div class="form-floating mb-3">
 
-                <div class="form-floating mb-3">
-                  
-                  <input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="adminUsu">
-                  
-                </div>
-                <div class="form-floating">
-                  
-                  <input type="password" class="form-control" id="floatingPassword" placeholder="Clave" name="adminContra">
-                  
-                </div>
+					<input type="text" class="form-control" id="floatingInput" placeholder="Usuario" name="adminUsu">
 
-                <button type="submit" name="action" value="logear" class="btn btn-primary">Iniciar sesion</button>
-            </form>
-        </div>
-        
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <h1>¿Eres Usuario?</h1>
-                    <p>Click aquí para acceder a nuestra web</p>
-                    <button class="hidden" id="login">Soy Usuario</button>
-                </div>
-                <div class="toggle-panel toggle-right">
-                    <h1>¿Eres Administrador?</h1>
-                    <p>Click aquí para acceder a las funciones de colaborador</p>
-                    <button class="hidden" id="register">Soy Administrador</button>
-                </div>
-            </div>
-        </div>
-    </div>
+				</div>
+				<div class="form-floating">
 
- 
-    <script>
-        function validarInicioSesionCliente() {
-          var usuario = document.getElementById("inputCod").value;
-          var clave = document.getElementById("inputCla").value;
-    
-          if (usuario === "codigo" && clave === "nru_documento") {
-            alert("Inicio de sesión exitoso");
-            window.location.href = "/";
-          } else {
-            alert("Codigo de Cliente o Contraseña incorrectos");
-          }
-        }
-      </script>
+					<input type="password" class="form-control" id="floatingPassword" placeholder="Clave"
+						name="adminContra">
 
-<script>
-    function validarInicioSesionUsuario() {
-      var usuario = document.getElementById("inputUsu").value;
-      var clave = document.getElementById("inputPsw").value;
+				</div>
 
-      if (usuario === "usuario" && clave === "clave") {
-        alert("Inicio de sesión exitoso");
-        window.location.href = "/";
-      } else {
-        alert("Nombre de usuario o Contraseña incorrectos");
-      }
-    }
-  </script>
+				<button type="submit" name="action" value="logear" class="btn btn-primary">Iniciar sesion</button>
+			
+		</div>
 
-    <script>
-        const container = document.getElementById('container');
-        const registerBtn = document.getElementById('register');
-        const loginBtn = document.getElementById('login');
+		<div class="form-container sign-in">
 
-        registerBtn.addEventListener('click', () => {
-                container.classList.add("active");
-                });
+			<form action="/login/valida" method="post" th:object="${Admin}">
+				<h1>Bienvenido</h1>
+				<div class="social-icons">
+					<span>Inicia sesion con tu Usuario y Clave</span>
+				</div>
 
-        loginBtn.addEventListener('click', () => {
-            container.classList.remove("active");
-                });
-    </script>
 
+				<div class="form-floating mb-3">
+
+					<input type="text" class="form-control" id="floatingInput" placeholder="Usuariosdfsdf" name="adminUsu">
+
+				</div>
+				<div class="form-floating">
+
+					<input type="password" class="form-control" id="floatingPassword" placeholder="Clave" name="adminContra">
+
+				</div>
+
+				<button type="submit" name="action" value="logear" class="btn btn-primary">Iniciar sesion</button>
+			</form>
+
+		</div>
+
+		<div class="toggle-container">
+			<div class="toggle">
+				<div class="toggle-panel toggle-left">
+					<h1>¿Eres Usuario?</h1>
+					<p>Click aquí para acceder a nuestra web</p>
+					<button class="hidden" id="login">Soy Usuario</button>
+				</div>
+				<div class="toggle-panel toggle-right">
+					<h1>¿Eres Administrador?</h1>
+					<p>Click aquí para acceder a las funciones de colaborador</p>
+					<button class="hidden" id="register">Soy Administrador</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script>
+		const container = document.getElementById('container');
+		const registerBtn = document.getElementById('register');
+		const loginBtn = document.getElementById('login');
+
+		registerBtn.addEventListener('click', () => {
+			container.classList.add("active");
+		});
+
+		loginBtn.addEventListener('click', () => {
+			container.classList.remove("active");
+		});
+	</script>
+	
 </body>
 
 </html>
