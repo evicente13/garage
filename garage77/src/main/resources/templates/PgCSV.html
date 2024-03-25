@@ -162,15 +162,17 @@
 							<h2 style="text-align: center;">
 								<span class="danger">Insumos</span> Disponibles
 							</h2>
+							
+							
 
-							<div th:each="Insumo : ${/PgCSV/listadoInsumos}">
+							<div th:each="Insumo : ${insumos}">
 								<input type="checkbox" th:id="'inputCod_' + ${Insumo.insumoId}"
 									name="InsumoId" th:value="${Insumo.insumoId}"> <label
 									th:for="'inputCod_' + ${Insumo.insumoId}"
 									th:text="${Insumo.insumoDescripcion}"></label> <br>
 							</div>
 
-
+							
 							<!-- 							<div th:each="Insumo : ${lstInsumos}"> -->
 							<!-- 								<input type="checkbox" th:id="${'Insumo_' + Insumo.insumoId}" -->
 							<!-- 									th:name="'insumosSeleccionados'" th:value="${Insumo.insumoId}"> -->

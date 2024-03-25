@@ -1,13 +1,11 @@
 package com.garage77.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 
+import com.garage77.model.Admin;
 import com.garage77.model.CSV;
 import com.garage77.model.Cliente;
 import com.garage77.model.Insumo;
@@ -44,20 +42,6 @@ public class ProyectoController {
 	@GetMapping("/Listados")
 	public String cargarListados() {
 		return "Listados";
-	}
-
-	@GetMapping("/PgCSV")
-	public String cargarPgCSV(Model model) {
-
-		model.addAttribute("cliente", new Cliente());
-		model.addAttribute("vehiculo", new Vehiculo());
-		model.addAttribute("insumos", new Insumo());
-		model.addAttribute("servicio", new Servicio());
-		model.addAttribute("csv", new CSV());
-		model.addAttribute("lstClientes", repoCli.findAll());
-//		model.addAttribute("lstInsumos", repoInsu.findAll());
-
-		return "PgCSV";
 	}
 
 	@GetMapping("/LsClientes")
