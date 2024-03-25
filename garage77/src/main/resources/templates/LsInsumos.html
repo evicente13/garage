@@ -157,11 +157,11 @@
                         </thead>
                         <tbody>
                             <tr th:each="i : ${lstInsumos}">
-                                <th scope="row" th:text="${i.codInsumo}">Nombre del cliente</th>
-                                <td th:text="${i.desInsumo}">Teléfono del cliente</td>
+                                <th scope="row" th:text="${i.insumoId}">Nombre del cliente</th>
+                                <td th:text="${i.insumoDescripcion}">Teléfono del cliente</td>
                                 <td>
                                     <form
-                                        th:action="@{/LsInsumos/editar/{i.codInsumo}(i.codInsumo=${i.codInsumo})}"
+                                        th:action="@{/LsInsumos/editar/{i.insumoId}(i.insumoId=${i.insumoId})}"
                                         method="get">
                                         <button type="submit" class="btn btn-link p-0">
                                             <img

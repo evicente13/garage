@@ -29,4 +29,68 @@ public class Vehiculo
     @Column(name = "cliente_id")
     private int clienteId;
     
+	@Override
+	public String toString() {
+		return "Vehiculo [placa=" + placa + ", añoVehiculo=" + añoVehiculo + ", kmActual=" + kmActual + ", kmAprox="
+				+ kmAprox + ", marca=" + marca + ", modelo=" + modelo + ", clienteId=" + clienteId + "]";
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public int getAñoVehiculo() {
+		return añoVehiculo;
+	}
+
+	public void setAñoVehiculo(int añoVehiculo) {
+		this.añoVehiculo = añoVehiculo;
+	}
+
+	public double getKmActual() {
+		return kmActual;
+	}
+
+	public void setKmActual(double kmActual) {
+		this.kmActual = kmActual;
+	}
+
+	public double getKmAprox() {
+		return kmAprox;
+	}
+
+	public void setKmAprox(double kmAprox) {
+		this.kmAprox = kmAprox;
+	}
+
+	public String getMarca() {
+		return marca;
+	}
+
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
+
+	public String getModelo() {
+		return modelo;
+	}
+
+	public void setModelo(String modelo) {
+		this.modelo = modelo;
+	}
+
+	public int getClienteId() {
+		return clienteId;
+	}
+
+	public void setClienteId(int clienteId) {
+		this.clienteId = clienteId;
+	}
+    
+    
+    
 }

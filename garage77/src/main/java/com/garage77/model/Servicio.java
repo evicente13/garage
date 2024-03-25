@@ -30,4 +30,38 @@ public class Servicio
     private LocalDateTime servicioHoraEntrega;
     @Column (name = "servicio_total")
     private double servicioTotal;
+    
+	@Override
+	public String toString() {
+		return "Servicio [servicioId=" + servicioId + ", servicioHoraRecep=" + servicioHoraRecep
+				+ ", servicioHoraEntrega=" + servicioHoraEntrega + ", servicioTotal=" + servicioTotal + "]";
+	}
+	public int getServicioId() {
+		return servicioId;
+	}
+	public void setServicioId(int servicioId) {
+		this.servicioId = servicioId;
+	}
+	public LocalDateTime getServicioHoraRecep() {
+		return servicioHoraRecep;
+	}
+	public void setServicioHoraRecep(LocalDateTime servicioHoraRecep) {
+		this.servicioHoraRecep = servicioHoraRecep;
+	}
+	public LocalDateTime getServicioHoraEntrega() {
+		return servicioHoraEntrega;
+	}
+	public void setServicioHoraEntrega(LocalDateTime servicioHoraEntrega) {
+		this.servicioHoraEntrega = servicioHoraEntrega;
+	}
+	public double getServicioTotal() {
+		return servicioTotal;
+	}
+	public void setServicioTotal(double servicioTotal) {
+		this.servicioTotal = servicioTotal;
+	}
+
+    
+    
+    
 }

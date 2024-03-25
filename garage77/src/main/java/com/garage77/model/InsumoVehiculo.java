@@ -27,6 +27,54 @@ public class InsumoVehiculo
     private double insumoPrecio;
 
     @Column (name = "servicio_id")
-    private int servicioId;  
+    private int servicioId;
+
+	@Override
+	public String toString() {
+		return "InsumoVehiculo [insumoVehiculoId=" + insumoVehiculoId + ", placa=" + placa + ", insumoId=" + insumoId
+				+ ", insumoPrecio=" + insumoPrecio + ", servicioId=" + servicioId + "]";
+	}
+
+	public int getInsumoVehiculoId() {
+		return insumoVehiculoId;
+	}
+
+	public void setInsumoVehiculoId(int insumoVehiculoId) {
+		this.insumoVehiculoId = insumoVehiculoId;
+	}
+
+	public String getPlaca() {
+		return placa;
+	}
+
+	public void setPlaca(String placa) {
+		this.placa = placa;
+	}
+
+	public int getInsumoId() {
+		return insumoId;
+	}
+
+	public void setInsumoId(int insumoId) {
+		this.insumoId = insumoId;
+	}
+
+	public double getInsumoPrecio() {
+		return insumoPrecio;
+	}
+
+	public void setInsumoPrecio(double insumoPrecio) {
+		this.insumoPrecio = insumoPrecio;
+	}
+
+	public int getServicioId() {
+		return servicioId;
+	}
+
+	public void setServicioId(int servicioId) {
+		this.servicioId = servicioId;
+	}  
+    
+    
     
 }

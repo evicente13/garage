@@ -5,10 +5,12 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.garage77.model.CSV;
@@ -22,8 +24,9 @@ import com.garage77.repository.IServicioRepository;
 import com.garage77.repository.IVehiculoRepository;
 import com.garage77.repository.InsumoRepository;
 import com.garage77.repository.InsumoVehiculoRepository;
-import com.garage77.repository.UserRepository;
 
+@Controller
+@RequestMapping("/PgCSV")
 public class CSVController
 {
 	
@@ -40,8 +43,9 @@ public class CSVController
 	
 	
 	
-	 @PostMapping("/PgCSV")
-     public String registrarCSV(@ModelAttribute CSV csv, @RequestParam(value = "action", required = false) String action, Model model) {
+	 @PostMapping("/PgRegistrarTodo")
+     public String registrarCSV(@ModelAttribute CSV csv, @RequestParam(value = "action", required = false)
+     String action, Model model) {
          if ("registrar".equals(action)) {
 
 
@@ -69,7 +73,6 @@ public class CSVController
 
 		InsumoVehiculo insumoVehiculo = new InsumoVehiculo();
 		insumoVehiculo.setPlaca(csv.getPlaca());
-		insumoVehiculo.setInsumoId(csv.getInsumoId());
 		insumoVehiculo.setInsumoPrecio(csv.getInsumoPrecio());
 
 		Insumo insumo = new Insumo();
@@ -77,41 +80,39 @@ public class CSVController
 		insumo.setInsumoDescripcion(csv.getInsumoDescripcion());
 		insumo.setInsumoPrecio(csv.getInsumoPrecio());
 		
-		
 
         // Verificar si ya existe un cliente con el mismo código
-          if (repoCli.existsById(csv.getIdCliente()))
-          {
-               model.addAttribute("mensaje", "El código de Cliente ya existe");
-            	   } else {
-            	        try {
-							Cliente newcliente = repoCli.save(cliente);
-
-							vehiculo.setClienteId(newcliente.getClienteId());
-							repoVehi.save(vehiculo);
-							
-							Servicio nuevoServicio = repoServ.save(servicio);
-							insumoVehiculo.setServicioId(nuevoServicio.getServicioId());
-							
-							repoInVe.save(insumoVehiculo);
-							
-            	            model.addAttribute("mensaje", "Cliente registrado correctamente");
-            	       } catch (Exception e) {
-            	            model.addAttribute("mensaje", "Error al registrar al Cliente");
-            	            }
-            	        }
-         }
-		 
-		 return "PgCSV";
-	}
+		 if (repoCli.existsById(csv.getIdCliente())) {
+		        model.addAttribute("mensaje", "El código de Cliente ya existe");
+		    } else {
+		        try {
+		            Cliente newcliente = repoCli.save(cliente);
+		            vehiculo.setClienteId(newcliente.getClienteId());
+		            repoVehi.save(vehiculo);
+		            
+		            Servicio nuevoServicio = repoServ.save(servicio);
+		            insumoVehiculo.setServicioId(nuevoServicio.getServicioId());
+		            
+		            InsumoVehiculo nuevoIV = repoInVe.save(insumoVehiculo);
+		            insumoVehiculo.setInsumoId(nuevoIV.getInsumoId());
+		                model.addAttribute("mensaje", "Cliente registrado correctamente ");
+		            
+		        } catch (Exception e) {
+		            System.out.print(insumoVehiculo);
+		            model.addAttribute("mensaje", "Error al registrar al Cliente");
+		        }
+		    }
+		    
+		}
+         return "PgCSV";
+	 }
 	 
-	@GetMapping("/PgCSV/listadoInsumos")
-	public String mostrarInsumos(Model model) 
-	{
+	 @GetMapping("/listadoInsumos")
+		public String mostrarInsumos(Model model) 
+		{
 			List <Insumo> listaInsumos = repoInsu.findAll();
 			model.addAttribute("insumos", listaInsumos);
 			System.out.print(listaInsumos);
 			return ("PgCSV");
 		} 
-
 }

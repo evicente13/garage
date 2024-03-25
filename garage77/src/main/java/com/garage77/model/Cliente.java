@@ -25,5 +25,32 @@ public class Cliente
     private String clienteTelefono;
     @Column(name = "cliente_dni")
     private String clienteDni;
+    
+	public int getClienteId() {
+		return clienteId;
+	}
+	public void setClienteId(int clienteId) {
+		this.clienteId = clienteId;
+	}
+	public String getClienteNombre() {
+		return clienteNombre;
+	}
+	public void setClienteNombre(String clienteNombre) {
+		this.clienteNombre = clienteNombre;
+	}
+	public String getClienteTelefono() {
+		return clienteTelefono;
+	}
+	public void setClienteTelefono(String clienteTelefono) {
+		this.clienteTelefono = clienteTelefono;
+	}
+	public String getClienteDni() {
+		return clienteDni;
+	}
+	public void setClienteDni(String clienteDni) {
+		this.clienteDni = clienteDni;
+	}
+    
+    
 
 }

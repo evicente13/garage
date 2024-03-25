@@ -48,6 +48,12 @@ public class Admin
 		this.adminApellido = adminApellido;
 	}
 	
+	@Override
+	public String toString() {
+		return "Admin [adminUsu=" + adminUsu + ", adminContra=" + adminContra + ", adminNombre=" + adminNombre
+				+ ", adminApellido=" + adminApellido + "]";
+	}
+	
 	
 	
 
